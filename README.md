@@ -157,9 +157,9 @@ Operational boundaries:
 
 ## Evaluation Artifacts
 
-The benchmark dataset is not bundled. Generated local eval outputs are ignored because they can contain benchmark text, prompts, retrieved context, and model outputs.
+The benchmark dataset is not bundled.
 
-Curated benchmark evidence for the published 90.6% run lives in the GitHub repository at `evals/locomo/runs/90_6/`.
+Run artifacts for the published 90.6% result are available in the GitHub repository at `evals/locomo/runs/90_6/`.
 
 ## License
 
