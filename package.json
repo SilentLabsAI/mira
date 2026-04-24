@@ -1,0 +1,70 @@
+{
+  "name": "@silentlabs/mira-core",
+  "version": "0.1.0",
+  "description": "Memory Inference and Retrieval Architecture: a memory system for AI.",
+  "license": "Apache-2.0",
+  "author": "SilentLabs",
+  "type": "module",
+  "main": "./dist/packages/mira-core/src/index.js",
+  "types": "./dist/packages/mira-core/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/packages/mira-core/src/index.d.ts",
+      "import": "./dist/packages/mira-core/src/index.js"
+    },
+    "./brain": {
+      "types": "./dist/packages/mira-core/src/lib/cog/brain.d.ts",
+      "import": "./dist/packages/mira-core/src/lib/cog/brain.js"
+    },
+    "./prompt": {
+      "types": "./dist/packages/mira-core/src/lib/cog/prompt_builder.d.ts",
+      "import": "./dist/packages/mira-core/src/lib/cog/prompt_builder.js"
+    },
+    "./maintenance": {
+      "types": "./dist/packages/mira-core/src/lib/cog/maintenance.d.ts",
+      "import": "./dist/packages/mira-core/src/lib/cog/maintenance.js"
+    },
+    "./supabase": {
+      "types": "./dist/packages/mira-supabase/src/client.d.ts",
+      "import": "./dist/packages/mira-supabase/src/client.js"
+    },
+    "./schema.sql": "./packages/mira-supabase/schema/memory_schema.sql"
+  },
+  "files": [
+    "dist/",
+    ".env.example",
+    "LICENSE",
+    "README.md",
+    "docs/",
+    "evals/locomo/README.md",
+    "evals/locomo/*.ts",
+    "examples/local-chat/",
+    "examples/next-chat-route/",
+    "packages/",
+    "scripts/",
+    "tsconfig.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "smoke": "npm run smoke:offline",
+    "smoke:offline": "tsx scripts/smoke.ts --offline",
+    "smoke:live": "tsx scripts/smoke.ts --live",
+    "eval:locomo": "tsx evals/locomo/locomo_eval.ts",
+    "eval:locomo-full": "tsx evals/locomo/locomo_eval_full.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
+    "dotenv": "^17.2.3",
+    "openai": "^6.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}

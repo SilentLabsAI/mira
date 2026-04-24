@@ -1,0 +1,58 @@
+# env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# dependencies
+node_modules/
+.pnp/
+
+# build output
+dist/
+build/
+.next/
+.vercel/
+out/
+*.tsbuildinfo
+
+# logs / generated data
+logs/
+log/
+*.log.*
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# datasets / artifacts
+data/
+beam_data/
+/locomo/
+locomo_old/
+v0_archive/
+artifacts/
+outputs/
+results/
+reports/
+coverage/
+eval-output/
+eval-outputs/
+eval-results/
+evals/**/data/
+evals/**/logs/
+evals/**/outputs/
+evals/**/results/
+evals/**/*.jsonl
+evals/**/*.ndjson
+*.pkl
+*.pickle
+*.db
+*.sqlite
+*.sqlite3
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
