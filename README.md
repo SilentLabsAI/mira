@@ -29,9 +29,9 @@ MIRA is built for that harder class of long-term conversational memory.
 - Treats corrections as first-class memory facts and gives them priority in generation when retrieved.
 - Runs on your OpenAI key and your Supabase/Postgres project.
 
-## Benchmark Result
+## Benchmark Result: LoCoMo QA categories 1-4
 
-MIRA scores **90.6%** on LOCOMO categories 1-4.
+MIRA v0.1.0 reports **90.6% (1,396 / 1,540)** on LoCoMo QA categories 1-4.
 
 | Category | Score |
 |---|---:|
@@ -41,7 +41,13 @@ MIRA scores **90.6%** on LOCOMO categories 1-4.
 | Multi-hop | 79.2% |
 | Open-domain | 94.2% |
 
-Methodology is documented below. Curated run evidence is kept in the GitHub repository at `evals/locomo/runs/90_6/`; the npm package ships the harness and docs, not bulky run artifacts.
+### Evaluation Scope
+
+MIRA v0.1.0 reports 90.6% on LoCoMo QA categories 1-4 (1,396 / 1,540), using `gpt-5-mini` for answer generation and judging. Category 5/adversarial is excluded, and public LoCoMo protocols vary across systems, so comparisons should be read within the stated scope.
+
+The scored run was runtime-clean: ground-truth answers, gold evidence annotations, category labels, judge outputs, failed-question reports, curated evidence, compressed logs, prior predictions, and previous failed-run state were not available to MIRA during ingestion, retrieval, route selection, prompt construction, or answer generation.
+
+Methodology is documented below. Curated run evidence is kept in the GitHub repository at `evals/locomo/runs/90_6/`; it is audit evidence and must not be mounted into MIRA runtime memory or document stores during scored runs. The npm package ships the harness and docs, not bulky run artifacts.
 
 Run configuration:
 
@@ -159,7 +165,11 @@ Operational boundaries:
 
 The benchmark dataset is not bundled.
 
-Run artifacts for the published 90.6% result are available in the GitHub repository at `evals/locomo/runs/90_6/`.
+Run artifacts for the published 90.6% LoCoMo QA categories 1-4 result are available in the GitHub repository at `evals/locomo/runs/90_6/`.
+
+Curated evidence in `evals/locomo/runs/90_6/` is audit evidence, not runtime input. Do not mount it into MIRA memory, documents, caches, prompts, or answer-time retrieval stores during scored runs.
+
+Generated eval outputs are ignored because they may contain benchmark text, prompts, retrieved context, model outputs, ground truth, judge metadata, or failure-analysis material.
 
 ## License
 

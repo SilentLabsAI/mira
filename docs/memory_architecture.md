@@ -50,9 +50,17 @@ After generation:
 
 ## Memory Reasoning Policy
 
-MIRA treats retrieval and reasoning as a single memory loop. Retrieved context is interpreted with a shared runtime policy for resolved dates, correction priority, exact-message recall, semantic continuity, entity/category resolution, list completeness, and synthesis across facts.
+MIRA treats retrieval and reasoning as a single memory loop. Retrieved context is interpreted with a shared runtime policy for resolved dates, correction priority, exact-message recall, semantic continuity, entity/topic resolution, list completeness, and synthesis across facts.
 
-This policy is part of the default generation prompt and is mirrored in the LOCOMO evaluation harness so the generation model uses retrieved memory consistently. It is not a benchmark answer key; it is the reasoning layer that turns stored memory into usable context.
+This policy is part of the default generation prompt and is mirrored in the LoCoMo evaluation harness so the generation model uses retrieved memory consistently. It is generic production logic, not a LoCoMo answer key, benchmark-specific example set, or dataset-specific prompt.
+
+## Benchmark Hygiene
+
+During scored evaluations, every memory surface can become a leak path: messages, facts, core memory, entities, documents, working memory and caches, relationships, and timeline records. Final scored runs require a fresh namespace and clean or isolated caches, including vector/full-text indexes and short-lived working memory.
+
+Ground-truth answers, gold evidence, category labels, judge outputs, compressed logs, curated evidence, failure-analysis reports, prior predictions, previous failed-run state, and public-materials drafts must never be stored in runtime memory surfaces for a scored run. They belong outside ingestion, retrieval, prompt construction, generation, documents, caches, and runtime tools.
+
+This document does not define a score. Public LoCoMo result claims should be scoped to LoCoMo QA categories 1-4, with category 5/adversarial excluded.
 
 ## Correction Handling
 
@@ -78,7 +86,7 @@ All MIRA calls that use Supabase must run with the service-role key on the serve
 
 ## Current State
 
-The memory engine, schema, chatbot integration path, and LOCOMO evaluation harness are included.
+The memory engine, schema, chatbot integration path, and LoCoMo evaluation harness are included.
 
 Host apps own:
 
